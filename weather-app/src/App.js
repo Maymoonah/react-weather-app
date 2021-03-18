@@ -29,7 +29,7 @@ class App extends Component {
   componentWillMount() {
     this.getAPI();
   }
-
+  
   render () {
     console.log(this.state.data);
     return (
