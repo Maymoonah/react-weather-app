@@ -1,30 +1,37 @@
 import React, { Component } from 'react';
-import ReactDOM from "react-dom"''
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
       lat: 34.0522,
       lon: 118.2437,
-      API_KEY: "a477dcbfc72c1c3cfb42a0aa6bacccbd"
+      API_KEY: "a477dcbfc72c1c3cfb42a0aa6bacccbd",
+      data: []
     };
-    // Binding method
     
+  }
+
+  getAPI() {
+    let api_call = '';
+    
+    if(typeof this.props.count !== 'undefined') {
+      api_call = `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.latitude}&lon=${this.state.longitude}&appid=a477dcbfc72c1c3cfb42a0aa6bacccbd`;
+    }
+
+    fetch(api_call)
+    .then(response => response.json())
+    .then(data => this.setState({ data: data, isLoading: false }));
   }
 
   componentWillMount() {
-    let api_call = `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.latitude}&lon=${this.state.longitude}&appid=${this.state.API_KEY}`;
-    if(this.state.lat) {
-      fetch(api_call)
-    .then(response => response.json())
-    .then(data => console.log(data));
-    }
-    
+    this.getAPI();
   }
 
   render () {
+    console.log(this.state.data);
     return (
       <div className="App">
         <header className="App-header">
