@@ -5,7 +5,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: "Los Angeles",
+      city: "",
       country: "",
       lat: "",
       lon: "",
@@ -42,10 +42,8 @@ class App extends Component {
       weatherDescription: data.weather[0].description,
       wind: data.wind.speed, 
       humidity: data.main.humidity
-    }));
-    if(typeof this.state.country !== undefined) {
-      this.renderInfo();
-    }
+    })).catch(err => console.log("Loading..."));
+    this.renderInfo();
   }
 
   renderInfo() {
