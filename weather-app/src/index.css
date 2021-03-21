@@ -1,3 +1,7 @@
+body {
+	background-image: url("images/clouds.jpg");
+}
+
 div.App {
 	margin: auto;
 	text-align: center;
@@ -8,30 +12,34 @@ h1#title {
 	font-family: monospace;
 	font-weight: bold;
 	font-size: 48px;
-	color: #1c59c9;
-	text-shadow: 2px 1px #000;
+	color: #fff;
+	text-shadow: 2px 2px #1c59c9;
+	letter-spacing: 2px;
 }
 
 .city {
+	width: 60%;
 	padding: 6px;
 	margin: 4px;
 	font-family: monospace;
 	font-size: 16px;
 	border: 2px solid #e6df1e;
 	color: #1c59c9;
+	text-align: center;
 }
 
 #submit {
 	padding: 6px;
 	margin: 4px;
-	width: 150px;
+	width: 60%;
 	font-family: monospace;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: bold;
 	color: #fff;
-	background-color: #0c2657;
-	border: 1px solid #0c2657;
+	background-color: #159fd1;
+	border: 2px solid #056587;
 	font-weight: normal;
+	text-transform: uppercase;
 }
 
 .weatherInfo {
