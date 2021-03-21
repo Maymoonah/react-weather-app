@@ -70,6 +70,7 @@ class App extends Component {
       <div className="App">
         <h1 id="title">Weather App</h1>
         <input type="text" placeholder="Enter city..." className="city"/>
+        <br/>
         <button id="submit" type="submit" onClick={this.getCity}>Check Weather!</button>
         <div className="info"></div>
       </div> 
