@@ -5,7 +5,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: "Los Angeles",
+      city: "",
       country: "",
       lat: "",
       lon: "",
@@ -24,12 +24,13 @@ class App extends Component {
     this.renderInfo = this.renderInfo.bind(this);
   }
 
-  getCity() {
+  getCity(event) {
+    event.preventDefault();
     let getCity = document.getElementsByClassName("city")[0].value;
     this.setState({ city: getCity });
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&APPID=${this.state.api_key}`) 
-    .then(response => response.json())
-    .then(data => this.setState({
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${getCity}&APPID=${this.state.api_key}`) 
+    .then(response => { return response.json()})
+    .then(data => {this.setState({
       city: data.name,
       country: data.sys.country,
       lat: data.coord.lat,
@@ -42,10 +43,9 @@ class App extends Component {
       weatherDescription: data.weather[0].description,
       wind: data.wind.speed, 
       humidity: data.main.humidity
-    }));
-    if(typeof this.state.country !== undefined) {
-      this.renderInfo();
-    }
+    })
+    this.renderInfo();
+    });
   }
 
   renderInfo() {
