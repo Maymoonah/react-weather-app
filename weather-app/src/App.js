@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class App extends Component {
 
@@ -28,7 +31,7 @@ class App extends Component {
     event.preventDefault();
     let getCity = document.getElementsByClassName("city")[0].value;
     this.setState({ city: getCity });
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${getCity}&APPID=${this.state.api_key}`) 
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${getCity}&units=imperial&APPID=${this.state.api_key}`) 
     .then(response => { return response.json()})
     .then(data => {this.setState({
       city: data.name,
@@ -50,7 +53,9 @@ class App extends Component {
 
   renderInfo() {
     document.getElementsByClassName("info")[0].innerHTML = `
-    <ul className="weather">
+    <Row>
+      <Col md={8}>
+        <ul className="weather">
         <li className="weatherInfo">City: ${this.state.city}, ${this.state.country}</li>
         <li className="weatherInfo">Latitude: ${this.state.lat}</li>
         <li className="weatherInfo">Longitude: ${this.state.lon}</li>
@@ -62,17 +67,27 @@ class App extends Component {
         <li className="weatherInfo">Weather Description: ${this.state.weatherDescription}</li>
         <li className="weatherInfo">Humidity: ${this.state.humidity}</li>
         <li className="weatherInfo">Wind Speed: ${this.state.wind} mph</li>
-    </ul>`
+      </ul>
+      </Col>
+      <Col md={4}>
+        <img src="https://lh3.googleusercontent.com/proxy/9kCQZp8Tkij0TRogDfJ8Ac3T3Dtwa3voCsA_IAO2Ju7qbz38P2h2Qyv4ArTnCR3g6aB_o-fJquXsddHaCURAkKdgACsRqmVhfhN4fNNj-Nx6z1fq-kU6oQn7Bw2aikmZ1K8zhIbBu9haEdtW" alt="Partly Cloudy"/>
+      </Col>
+    </Row>
+    `
   }  
 
   render () {
     return (
       <div className="App">
-        <h1 id="title">Weather App</h1>
-        <input type="text" placeholder="Enter city..." className="city"/>
-        <br/>
-        <button id="submit" type="submit" onClick={this.getCity}>Check Weather!</button>
-        <div className="info"></div>
+        <Container>
+          <h1 id="title">Weather App</h1>
+            <input type="text" placeholder="Enter city..." className="city"/>
+            <br/>
+            <button id="submit" type="submit" onClick={this.getCity}>Check Weather!</button>
+          <div className="info">
+
+          </div>
+        </Container>
       </div> 
     );
   }
