@@ -56,22 +56,20 @@ class App extends Component {
     <Row>
       <Col md={8}>
         <ul className="weather">
-        <li className="weatherInfo">City: ${this.state.city}, ${this.state.country}</li>
-        <li className="weatherInfo">Latitude: ${this.state.lat}</li>
-        <li className="weatherInfo">Longitude: ${this.state.lon}</li>
-        <li className="weatherInfo">Temperature: ${this.state.temperature}</li>
-        <li className="weatherInfo">Feels Like: ${this.state.feelsLike}</li>
-        <li className="weatherInfo">Maximum Temperature: ${this.state.maxTemp}</li>
-        <li className="weatherInfo">Minimum Temperature: ${this.state.minTemp}</li>
-        <li className="weatherInfo">Weather: ${this.state.weather}</li>
-        <li className="weatherInfo">Weather Description: ${this.state.weatherDescription}</li>
-        <li className="weatherInfo">Humidity: ${this.state.humidity}</li>
-        <li className="weatherInfo">Wind Speed: ${this.state.wind} mph</li>
-      </ul>
+          <li className="weatherInfo"><strong>City:</strong> <span className="details">${this.state.city}, ${this.state.country}</span></li>
+          <li className="weatherInfo"><strong>Latitude:</strong> <span className="details">${this.state.lat}</span></li>
+          <li className="weatherInfo"><strong>Longitude:</strong> <span className="details">${this.state.lon}</span></li>
+          <li className="weatherInfo"><strong>Temperature:</strong> <span className="details"> ${this.state.temperature}</span></li>
+          <li className="weatherInfo"><strong>Feels Like:</strong> <span className="details">${this.state.feelsLike}</span></li>
+          <li className="weatherInfo"><strong>Maximum Temperature: </strong><span className="details">${this.state.maxTemp}</span></li>
+          <li className="weatherInfo"><strong>Minimum Temperature: </strong><span className="details">${this.state.minTemp}</span></li>
+          <li className="weatherInfo"><strong>Weather:</strong> <span className="details">${this.state.weather}</span></li>
+          <li className="weatherInfo"><strong>Weather Description: </strong><span className="details">${this.state.weatherDescription}</span></li>
+          <li className="weatherInfo"><strong>Humidity:</strong> <span className="details">${this.state.humidity}</li>
+          <li className="weatherInfo"><strong>Wind Speed:</strong> <span className="details">${this.state.wind} mph</span></li>
+        </ul>
       </Col>
-      <Col md={4}>
-        <img src="https://lh3.googleusercontent.com/proxy/9kCQZp8Tkij0TRogDfJ8Ac3T3Dtwa3voCsA_IAO2Ju7qbz38P2h2Qyv4ArTnCR3g6aB_o-fJquXsddHaCURAkKdgACsRqmVhfhN4fNNj-Nx6z1fq-kU6oQn7Bw2aikmZ1K8zhIbBu9haEdtW" alt="Partly Cloudy"/>
-      </Col>
+      
     </Row>
     `
   }  
