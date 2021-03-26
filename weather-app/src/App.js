@@ -8,18 +8,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: "",
-      country: "",
-      lat: "",
-      lon: "",
-      temperature: "",
-      feelsLike: "",
-      maxTemp: "",
-      minTemp: "",
-      weather: "",
-      weatherDescription: "",
-      wind: "", 
-      humidity: "",
       api_key: 'dbcb6d54de23ada0919e45a242572082'
     };
 
