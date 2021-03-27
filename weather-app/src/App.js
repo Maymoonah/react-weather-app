@@ -60,7 +60,19 @@ class App extends Component {
       
     </Row>
     `
-  }  
+  } 
+
+  // make api call if "enter" button is pressed
+  onEnter() {
+    let input = document.getElementsByClassName("city");
+    input.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        this.getCity();
+      }
+    });
+  }
+ 
 
   render () {
     return (
