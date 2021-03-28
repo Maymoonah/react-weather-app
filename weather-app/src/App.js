@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Container, Card, ListGroup, ListGroupItem } from 'react-bootstrap/';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
 
@@ -101,10 +100,9 @@ class App extends Component {
             <input type="text" placeholder="Enter city..." className="city"/>
             <br/>
             <button id="submit" type="submit" onClick={this.getCity}>Check Weather!</button>
-          <div className="info">
-
-          </div>
+          <div className="info"></div>
         </Container>
+        
       </div> 
     );
   }
