@@ -14,7 +14,7 @@ class App extends Component {
     this.getCity = this.getCity.bind(this);
     this.renderInfo = this.renderInfo.bind(this);
     this.getKey = this.getKey.bind(this);
-    this.accuweather = this.accuweather.bind(this);
+    this.nextFiveDays = this.nextFiveDays.bind(this);
   }
 
   getKey(city) {
@@ -22,11 +22,12 @@ class App extends Component {
     .then(response => { return response.json()})
     .then(data => { 
       this.setState({ cityKey: data[0].Key })
-      this.accuweather();
+      this.nextFiveDays();
     });
   }
 
-  accuweather() {
+  // Get next forecase for next five days from accuweather
+  nextFiveDays() {
     fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.state.cityKey}?apikey=${this.state.API}`)
     .then(response => { return response.json()})
     .then(data => console.log(data));
@@ -78,7 +79,8 @@ class App extends Component {
       
     </Row>
     `
-  } 
+  }
+
 
   // make api call if "enter" button is pressed
   onEnter() {
