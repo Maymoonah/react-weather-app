@@ -8,11 +8,30 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      api_key: 'dbcb6d54de23ada0919e45a242572082'
+      api_key: 'dbcb6d54de23ada0919e45a242572082',
+      API: 'q7C352wRG59qS1UpqlAnoNPIhirf7pA4'
     };
 
     this.getCity = this.getCity.bind(this);
     this.renderInfo = this.renderInfo.bind(this);
+    this.getKey = this.getKey.bind(this);
+    this.accuweather = this.accuweather.bind(this);
+  }
+
+  getKey(event) {
+    event.preventDefault();
+    fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${this.state.API}&q=London`)
+    .then(response => { return response.json()})
+    .then(data => { 
+      this.setState({ cityKey: data[0].Key })
+      this.accuweather();
+    });
+  }
+
+  accuweather() {
+    fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.state.cityKey}?apikey=${this.state.API}`)
+    .then(response => { return response.json()})
+    .then(data => console.log(data));
   }
 
   getCity(event) {
