@@ -18,9 +18,8 @@ class App extends Component {
     this.accuweather = this.accuweather.bind(this);
   }
 
-  getKey(event) {
-    event.preventDefault();
-    fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${this.state.API}&q=London`)
+  getKey(city) {
+    fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${this.state.API}&q=${city}`)
     .then(response => { return response.json()})
     .then(data => { 
       this.setState({ cityKey: data[0].Key })
@@ -55,6 +54,7 @@ class App extends Component {
       humidity: data.main.humidity
     })
     this.renderInfo();
+    this.getKey(getCity);
     });
   }
 
