@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Card, ListGroup, ListGroupItem } from 'react-bootstrap/';
+import { Container, Card, ListGroup, ListGroupItem, CardGroup } from 'react-bootstrap/';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
@@ -45,11 +45,59 @@ class App extends Component {
   renderFiveDays() {
     const data = Object.entries(this.state.nextFiveDays);
     let fiveDays = document.getElementsByClassName("fiveDays")[0].innerHTML = `
-      <p>Day 1: ${data[0][1].Date}, ${data[0][1].Day["IconPhrase"]}, ${data[0][1].Temperature.Maximum.Value}/${data[0][1].Temperature.Minimum.Value}</p>
-      <p>Day 2: ${data[1][1].Date}, ${data[1][1].Day["IconPhrase"]}, ${data[1][1].Temperature.Maximum.Value}/${data[1][1].Temperature.Minimum.Value}</p>
-      <p>Day 3: ${data[2][1].Date}, ${data[2][1].Day["IconPhrase"]}, ${data[2][1].Temperature.Maximum.Value}/${data[2][1].Temperature.Minimum.Value}</p>
-      <p>Day 4: ${data[3][1].Date}, ${data[3][1].Day["IconPhrase"]}, ${data[3][1].Temperature.Maximum.Value}/${data[3][1].Temperature.Minimum.Value}</p>
-      <p>Day 5: ${data[4][1].Date}, ${data[4][1].Day["IconPhrase"]}, ${data[4][1].Temperature.Maximum.Value}/${data[4][1].Temperature.Minimum.Value}</p>
+      
+      <CardGroup>
+        <Card>
+          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Body>
+            <Card.Title>Day 1</Card.Title>
+            <Card.Text>
+              ${data[0][1].Date}, ${data[0][1].Day["IconPhrase"]}, ${data[0][1].Temperature.Maximum.Value}/${data[0][1].Temperature.Minimum.Value}
+            </Card.Text>
+          </Card.Body>
+          
+        </Card>
+        <Card>
+          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Body>
+            <Card.Title>Day 2</Card.Title>
+            <Card.Text>
+              ${data[1][1].Date}, ${data[1][1].Day["IconPhrase"]}, ${data[1][1].Temperature.Maximum.Value}/${data[1][1].Temperature.Minimum.Value}
+            </Card.Text>
+          </Card.Body>
+          
+        </Card>
+        <Card>
+          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Body>
+            <Card.Title>Day 3</Card.Title>
+            <Card.Text>
+              ${data[2][1].Date}, ${data[2][1].Day["IconPhrase"]}, ${data[2][1].Temperature.Maximum.Value}/${data[2][1].Temperature.Minimum.Value}
+            </Card.Text>
+          </Card.Body>
+          
+        </Card>
+        <Card>
+          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Body>
+            <Card.Title>Day 4</Card.Title>
+            <Card.Text>
+              ${data[3][1].Date}, ${data[3][1].Day["IconPhrase"]}, ${data[3][1].Temperature.Maximum.Value}/${data[3][1].Temperature.Minimum.Value}
+            </Card.Text>
+          </Card.Body>
+          
+        </Card>
+        <Card>
+          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Body>
+            <Card.Title>Day 5</Card.Title>
+            <Card.Text>
+              ${data[4][1].Date}, ${data[4][1].Day["IconPhrase"]}, ${data[4][1].Temperature.Maximum.Value}/${data[4][1].Temperature.Minimum.Value}
+            </Card.Text>
+          </Card.Body>
+          
+        </Card>
+      </CardGroup>
     `
     console.log(data[0][1]);    
   }
