@@ -8,7 +8,8 @@ class App extends Component {
     super(props);
     this.state = {
       api_key: 'dbcb6d54de23ada0919e45a242572082',
-      API: 'q7C352wRG59qS1UpqlAnoNPIhirf7pA4'
+      API: 'q7C352wRG59qS1UpqlAnoNPIhirf7pA4',
+      data: []
     };
 
     this.getCity = this.getCity.bind(this);
@@ -30,7 +31,12 @@ class App extends Component {
   nextFiveDays() {
     fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.state.cityKey}?apikey=${this.state.API}`)
     .then(response => { return response.json()})
-    .then(data => console.log(data));
+    .then(data => { 
+      this.setState({ 
+        nextFiveDays: data.DailyForecasts
+      }) 
+    });
+
   }
 
   getCity(event) {
@@ -81,19 +87,6 @@ class App extends Component {
     `
   }
 
-
-  // make api call if "enter" button is pressed
-  onEnter() {
-    let input = document.getElementsByClassName("city");
-    input.addEventListener("keyup", function(event) {
-      if (event.keyCode === 13) {
-        event.preventDefault();
-        this.getCity();
-      }
-    });
-  }
- 
-
   render () {
     return (
       <div className="App">
@@ -103,6 +96,7 @@ class App extends Component {
             <br/>
             <button id="submit" type="submit" onClick={this.getCity}>Check Weather!</button>
           <div className="info"></div>
+          <div></div>
         </Container>
         
       </div> 
