@@ -16,6 +16,8 @@ class App extends Component {
     this.renderInfo = this.renderInfo.bind(this);
     this.getKey = this.getKey.bind(this);
     this.nextFiveDays = this.nextFiveDays.bind(this);
+    this.renderFiveDays = this.renderFiveDays.bind(this);
+
   }
 
   getKey(city) {
@@ -35,9 +37,18 @@ class App extends Component {
       this.setState({ 
         nextFiveDays: data.DailyForecasts
       }) 
+      this.renderFiveDays();
     });
 
   }
+
+  renderFiveDays() {
+    const data = Object.entries(this.state.nextFiveDays);
+    for(let el in data) {
+      console.log(data[el].[1]);
+    }
+  }
+
 
   getCity(event) {
     event.preventDefault();
@@ -61,6 +72,7 @@ class App extends Component {
     })
     this.renderInfo();
     this.getKey(getCity);
+
     });
   }
 
