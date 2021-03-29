@@ -44,9 +44,14 @@ class App extends Component {
 
   renderFiveDays() {
     const data = Object.entries(this.state.nextFiveDays);
-    for(let el in data) {
-      console.log(data[el].[1]);
-    }
+    let fiveDays = document.getElementsByClassName("fiveDays")[0].innerHTML = `
+      <p>Day 1: ${data[0][1].Date}, ${data[0][1].Day["IconPhrase"]}, ${data[0][1].Temperature.Maximum.Value}/${data[0][1].Temperature.Minimum.Value}</p>
+      <p>Day 2: ${data[1][1].Date}, ${data[1][1].Day["IconPhrase"]}, ${data[1][1].Temperature.Maximum.Value}/${data[1][1].Temperature.Minimum.Value}</p>
+      <p>Day 3: ${data[2][1].Date}, ${data[2][1].Day["IconPhrase"]}, ${data[2][1].Temperature.Maximum.Value}/${data[2][1].Temperature.Minimum.Value}</p>
+      <p>Day 4: ${data[3][1].Date}, ${data[3][1].Day["IconPhrase"]}, ${data[3][1].Temperature.Maximum.Value}/${data[3][1].Temperature.Minimum.Value}</p>
+      <p>Day 5: ${data[4][1].Date}, ${data[4][1].Day["IconPhrase"]}, ${data[4][1].Temperature.Maximum.Value}/${data[4][1].Temperature.Minimum.Value}</p>
+    `
+    console.log(data[0][1]);    
   }
 
 
@@ -108,7 +113,7 @@ class App extends Component {
             <br/>
             <button id="submit" type="submit" onClick={this.getCity}>Check Weather!</button>
           <div className="info"></div>
-          <div></div>
+          <div className="fiveDays"></div>
         </Container>
         
       </div> 
