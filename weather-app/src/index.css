@@ -2,7 +2,6 @@
 	margin: auto;
 	width: 80%;
 	height: 80%;
-	background-image: url("images/clouds.jpg");
 	border-radius: 10px;
 	border: 4px solid #faf67f;
 }
@@ -18,8 +17,7 @@ h1#title {
 	font-family: monospace;
 	font-weight: bold;
 	font-size: 48px;
-	color: #fff;
-	text-shadow: 2px 2px #1c59c9;
+	color: #1c59c9;
 	letter-spacing: 2px;
 }
 
@@ -68,4 +66,9 @@ h1#title {
 .info span {
 	color: #0477bf;
 	font-weight: bold;
+}
+
+.weatherPhoto {
+	height: 150px;
+	width: 100px;
 }
