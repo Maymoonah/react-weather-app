@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Card, ListGroup, ListGroupItem, CardGroup, Images } from 'react-bootstrap/';
+import { Container, Card, CardGroup } from 'react-bootstrap/';
 
 
 class App extends Component {
