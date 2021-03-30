@@ -38,8 +38,7 @@ class App extends Component {
     .then(data => { 
       this.setState({ 
         nextFiveDays: Object.entries(data.DailyForecasts)
-      }) 
-      // this.renderFiveDays();
+      })
     });
 
   }
@@ -48,57 +47,55 @@ class App extends Component {
   renderFiveDays() {
     let data = this.state.nextFiveDays;
     return ( 
-      
       <CardGroup>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Img className ="weatherPhoto" variant="top" src="images/sunny.jpg" />
           <Card.Body>
             <Card.Title>Day 1</Card.Title>
             <Card.Text>
-              ${data[0][1].Date}, ${data[0][1].Day["IconPhrase"]}, ${data[0][1].Temperature.Maximum.Value}/${data[0][1].Temperature.Minimum.Value}
+              {data[0][1].Date}, {data[0][1].Day["IconPhrase"]}, {data[0][1].Temperature.Maximum.Value}/{data[0][1].Temperature.Minimum.Value}
             </Card.Text>
           </Card.Body>
           
         </Card>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Img className ="weatherPhoto" variant="top" src="images/partly_cloudy.jpg" />
           <Card.Body>
             <Card.Title>Day 2</Card.Title>
             <Card.Text>
-              ${data[1][1].Date}, ${data[1][1].Day["IconPhrase"]}, ${data[1][1].Temperature.Maximum.Value}/${data[1][1].Temperature.Minimum.Value}
+              {data[1][1].Date}, {data[1][1].Day["IconPhrase"]}, {data[1][1].Temperature.Maximum.Value}/{data[1][1].Temperature.Minimum.Value}
             </Card.Text>
           </Card.Body>
           
         </Card>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Img className ="weatherPhoto" variant="top" src="images/cloudy.jpg" />
           <Card.Body>
             <Card.Title>Day 3</Card.Title>
             <Card.Text>
-              ${data[2][1].Date}, ${data[2][1].Day["IconPhrase"]}, ${data[2][1].Temperature.Maximum.Value}/${data[2][1].Temperature.Minimum.Value}
+              {data[2][1].Date}, {data[2][1].Day["IconPhrase"]}, {data[2][1].Temperature.Maximum.Value}/{data[2][1].Temperature.Minimum.Value}
             </Card.Text>
           </Card.Body>
           
         </Card>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Img className ="weatherPhoto" variant="top" src="images/rainy.jpg" />
           <Card.Body>
             <Card.Title>Day 4</Card.Title>
             <Card.Text>
-              ${data[3][1].Date}, ${data[3][1].Day["IconPhrase"]}, ${data[3][1].Temperature.Maximum.Value}/${data[3][1].Temperature.Minimum.Value}
+              {data[3][1].Date}, {data[3][1].Day["IconPhrase"]}, {data[3][1].Temperature.Maximum.Value}/{data[3][1].Temperature.Minimum.Value}
             </Card.Text>
           </Card.Body>
           
         </Card>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Img className ="weatherPhoto" variant="top" src="images/sunny.jpg" />
           <Card.Body>
             <Card.Title>Day 5</Card.Title>
             <Card.Text>
-              ${data[4][1].Date}, ${data[4][1].Day["IconPhrase"]}, ${data[4][1].Temperature.Maximum.Value}/${data[4][1].Temperature.Minimum.Value}
+              {data[4][1].Date}, {data[4][1].Day["IconPhrase"]}, {data[4][1].Temperature.Maximum.Value}/{data[4][1].Temperature.Minimum.Value}
             </Card.Text>
           </Card.Body>
-          
         </Card>
       </CardGroup>
     )   
@@ -127,32 +124,31 @@ class App extends Component {
     })
     this.renderInfo();
     this.getKey(getCity);
-
     });
   }
 
   renderInfo() {
-    document.getElementsByClassName("info")[0].innerHTML = `
+    return (
     <Card className="bg-info text-white">
       <Card.Img src="holder.js/100px270" alt="Card image" />
       <Card.ImgOverlay>
-        <Card.Title>Weather App</Card.Title></br>
+        <Card.Title>Weather App</Card.Title><br/>
         <Card.Text>
-          <strong>City:</strong> <span className="details">${this.state.city}, ${this.state.country}</span></br>
-          <strong>Latitude:</strong> <span className="details">${this.state.lat}</span></br>
-          <strong>Longitude:</strong> <span className="details">${this.state.lon}</span></br>
-          <strong>Temperature:</strong> <span className="details"> ${this.state.temperature}</span></br>
-          <strong>Feels Like:</strong> <span className="details">${this.state.feelsLike}</span></br>
-          <strong>Maximum Temperature: </strong><span className="details">${this.state.maxTemp}</span></br>
-          <strong>Minimum Temperature: </strong><span className="details">${this.state.minTemp}</span></br>
-          <strong>Weather:</strong> <span className="details">${this.state.weather}</span></br>
-          <strong>Weather Description: </strong><span className="details">${this.state.weatherDescription}</span></br>
-          <strong>Humidity:</strong> <span className="details">${this.state.humidity}</span></br>
-          <strong>Wind Speed:</strong> <span className="details">${this.state.wind} mph</span></br>
+          <strong>City:</strong> <span className="details">{this.state.city}, {this.state.country}</span><br/>
+          <strong>Latitude:</strong> <span className="details">{this.state.lat}</span><br/>
+          <strong>Longitude:</strong> <span className="details">{this.state.lon}</span><br/>
+          <strong>Temperature:</strong> <span className="details"> {this.state.temperature}</span><br/>
+          <strong>Feels Like:</strong> <span className="details">{this.state.feelsLike}</span><br/>
+          <strong>Maximum Temperature: </strong><span className="details">{this.state.maxTemp}</span><br/>
+          <strong>Minimum Temperature: </strong><span className="details">{this.state.minTemp}</span><br/>
+          <strong>Weather:</strong> <span className="details">{this.state.weather}</span><br/>
+          <strong>Weather Description: </strong><span className="details">{this.state.weatherDescription}</span><br/>
+          <strong>Humidity:</strong> <span className="details">{this.state.humidity}</span><br/>
+          <strong>Wind Speed:</strong> <span className="details">{this.state.wind} mph</span><br/>
         </Card.Text>
       </Card.ImgOverlay>
     </Card>
-    `
+    )
   }
 
   render () {
