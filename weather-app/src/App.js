@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Card, ListGroup, ListGroupItem, CardGroup } from 'react-bootstrap/';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Card, ListGroup, ListGroupItem, CardGroup, Images } from 'react-bootstrap/';
+
 
 class App extends Component {
 
@@ -12,6 +12,7 @@ class App extends Component {
       data: []
     };
 
+    // bind this
     this.getCity = this.getCity.bind(this);
     this.renderInfo = this.renderInfo.bind(this);
     this.getKey = this.getKey.bind(this);
@@ -20,6 +21,7 @@ class App extends Component {
 
   }
 
+  // get city key from accuweather
   getKey(city) {
     fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${this.state.API}&q=${city}`)
     .then(response => { return response.json()})
@@ -29,22 +31,23 @@ class App extends Component {
     });
   }
 
-  // Get next forecase for next five days from accuweather
+  // Get next forecase for next five days from accuweather using city key
   nextFiveDays() {
     fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.state.cityKey}?apikey=${this.state.API}`)
     .then(response => { return response.json()})
     .then(data => { 
       this.setState({ 
-        nextFiveDays: data.DailyForecasts
+        nextFiveDays: Object.entries(data.DailyForecasts)
       }) 
-      this.renderFiveDays();
+      // this.renderFiveDays();
     });
 
   }
 
+  // render next five day forecast to the 'fiveDays' div
   renderFiveDays() {
-    const data = Object.entries(this.state.nextFiveDays);
-    let fiveDays = document.getElementsByClassName("fiveDays")[0].innerHTML = `
+    let data = this.state.nextFiveDays;
+    return ( 
       
       <CardGroup>
         <Card>
@@ -98,8 +101,7 @@ class App extends Component {
           
         </Card>
       </CardGroup>
-    `
-    console.log(data[0][1]);    
+    )   
   }
 
 
@@ -131,28 +133,33 @@ class App extends Component {
 
   renderInfo() {
     document.getElementsByClassName("info")[0].innerHTML = `
-    <Row>
-      <Col md={8}>
-        <ul className="weather">
-          <li className="weatherInfo"><strong>City:</strong> <span className="details">${this.state.city}, ${this.state.country}</span></li>
-          <li className="weatherInfo"><strong>Latitude:</strong> <span className="details">${this.state.lat}</span></li>
-          <li className="weatherInfo"><strong>Longitude:</strong> <span className="details">${this.state.lon}</span></li>
-          <li className="weatherInfo"><strong>Temperature:</strong> <span className="details"> ${this.state.temperature}</span></li>
-          <li className="weatherInfo"><strong>Feels Like:</strong> <span className="details">${this.state.feelsLike}</span></li>
-          <li className="weatherInfo"><strong>Maximum Temperature: </strong><span className="details">${this.state.maxTemp}</span></li>
-          <li className="weatherInfo"><strong>Minimum Temperature: </strong><span className="details">${this.state.minTemp}</span></li>
-          <li className="weatherInfo"><strong>Weather:</strong> <span className="details">${this.state.weather}</span></li>
-          <li className="weatherInfo"><strong>Weather Description: </strong><span className="details">${this.state.weatherDescription}</span></li>
-          <li className="weatherInfo"><strong>Humidity:</strong> <span className="details">${this.state.humidity}</li>
-          <li className="weatherInfo"><strong>Wind Speed:</strong> <span className="details">${this.state.wind} mph</span></li>
-        </ul>
-      </Col>
-      
-    </Row>
+    <Card className="bg-info text-white">
+      <Card.Img src="holder.js/100px270" alt="Card image" />
+      <Card.ImgOverlay>
+        <Card.Title>Weather App</Card.Title></br>
+        <Card.Text>
+          <strong>City:</strong> <span className="details">${this.state.city}, ${this.state.country}</span></br>
+          <strong>Latitude:</strong> <span className="details">${this.state.lat}</span></br>
+          <strong>Longitude:</strong> <span className="details">${this.state.lon}</span></br>
+          <strong>Temperature:</strong> <span className="details"> ${this.state.temperature}</span></br>
+          <strong>Feels Like:</strong> <span className="details">${this.state.feelsLike}</span></br>
+          <strong>Maximum Temperature: </strong><span className="details">${this.state.maxTemp}</span></br>
+          <strong>Minimum Temperature: </strong><span className="details">${this.state.minTemp}</span></br>
+          <strong>Weather:</strong> <span className="details">${this.state.weather}</span></br>
+          <strong>Weather Description: </strong><span className="details">${this.state.weatherDescription}</span></br>
+          <strong>Humidity:</strong> <span className="details">${this.state.humidity}</span></br>
+          <strong>Wind Speed:</strong> <span className="details">${this.state.wind} mph</span></br>
+        </Card.Text>
+      </Card.ImgOverlay>
+    </Card>
     `
   }
 
   render () {
+    let data;
+    if(this.state.nextFiveDays) {
+      data = this.renderFiveDays();
+    }
     return (
       <div className="App">
         <Container>
@@ -161,9 +168,8 @@ class App extends Component {
             <br/>
             <button id="submit" type="submit" onClick={this.getCity}>Check Weather!</button>
           <div className="info"></div>
-          <div className="fiveDays"></div>
+          <div className="fiveDays">{data}</div>
         </Container>
-        
       </div> 
     );
   }
