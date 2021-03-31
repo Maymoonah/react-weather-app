@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Card, CardGroup } from 'react-bootstrap/';
-
+import { Container, Card, CardGroup, Button, Badge} from 'react-bootstrap/';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuestion, faCloudSunRain } from '@fortawesome/free-solid-svg-icons'
 
 class App extends Component {
 
@@ -122,13 +123,15 @@ class App extends Component {
       wind: data.wind.speed, 
       humidity: data.main.humidity
     })
-    this.renderInfo();
-    this.getKey(getCity);
+    if(typeof this.state.city !== "undefined") {
+      this.renderInfo();
+      this.getKey(getCity);
+    }
     });
   }
 
   renderInfo() {
-    return (
+    return(
     <Card className="bg-info text-white">
       <Card.Img src="holder.js/100px270" alt="Card image" />
       <Card.ImgOverlay>
@@ -152,19 +155,19 @@ class App extends Component {
   }
 
   render () {
-    let data;
+    let fiveDays;
     if(this.state.nextFiveDays) {
-      data = this.renderFiveDays();
+      fiveDays = this.renderFiveDays();
     }
     return (
       <div className="App">
-        <Container>
-          <h1 id="title">Weather App</h1>
+        <Container fluid>
+          <h1 id="title"><Badge variant="info"><FontAwesomeIcon icon={faCloudSunRain} /> What's The Weather Like <FontAwesomeIcon icon={faQuestion} /></Badge></h1>
             <input type="text" placeholder="Enter city..." className="city"/>
             <br/>
-            <button id="submit" type="submit" onClick={this.getCity}>Check Weather!</button>
+            <Button variant="info" id="submit" onClick={this.getCity}>Check Weather!</Button>
           <div className="info"></div>
-          <div className="fiveDays">{data}</div>
+          <div className="fiveDays">{fiveDays}</div>
         </Container>
       </div> 
     );
