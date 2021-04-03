@@ -147,18 +147,23 @@ class App extends Component {
   renderInfo() {
     return(
       <div>
-        <Card>
-          <strong>City:</strong> <span className="details">{this.state.city}, {this.state.country}</span><br/>
-          <strong>Latitude:</strong> <span className="details">{this.state.lat}</span><br/>
-          <strong>Longitude:</strong> <span className="details">{this.state.lon}</span><br/>
-          <strong>Temperature:</strong> <span className="details"> {this.state.temperature}</span><br/>
-          <strong>Feels Like:</strong> <span className="details">{this.state.feelsLike}</span><br/>
-          <strong>Maximum Temperature: </strong><span className="details">{this.state.maxTemp}</span><br/>
-          <strong>Minimum Temperature: </strong><span className="details">{this.state.minTemp}</span><br/>
-          <strong>Weather:</strong> <span className="details">{this.state.weather}</span><br/>
-          <strong>Weather Description: </strong><span className="details">{this.state.weatherDescription}</span><br/>
-          <strong>Humidity:</strong> <span className="details">{this.state.humidity}</span><br/>
-          <strong>Wind Speed:</strong> <span className="details">{this.state.wind} mph</span><br/>
+        <Card className="text-white">
+          <Card.Img src="images/sky.jpg" alt="Card image" className="sky"/>
+          <Card.ImgOverlay>
+            <Card.Text>
+              <strong>City:</strong> <span className="details">{this.state.city}, {this.state.country}</span><br/>
+                  <strong>Latitude:</strong> <span className="details">{this.state.lat}</span><br/>
+                  <strong>Longitude:</strong> <span className="details">{this.state.lon}</span><br/>
+                  <strong>Temperature:</strong> <span className="details"> {this.state.temperature}</span><br/>
+                  <strong>Feels Like:</strong> <span className="details">{this.state.feelsLike}</span><br/>
+                  <strong>Maximum Temperature: </strong><span className="details">{this.state.maxTemp}</span><br/>
+                  <strong>Minimum Temperature: </strong><span className="details">{this.state.minTemp}</span><br/>
+                  <strong>Weather:</strong> <span className="details">{this.state.weather}</span><br/>
+                  <strong>Weather Description: </strong><span className="details">{this.state.weatherDescription}</span><br/>
+                  <strong>Humidity:</strong> <span className="details">{this.state.humidity}</span><br/>
+                  <strong>Wind Speed:</strong> <span className="details">{this.state.wind} mph</span><br/>
+            </Card.Text>
+          </Card.ImgOverlay>
         </Card>
       </div>
     )
@@ -175,10 +180,12 @@ class App extends Component {
     return (
       <div className="App">
         <Container fluid>
+          <div className="header">
           <h1 id="title"><Badge variant="primary"><FontAwesomeIcon icon={faCloudSunRain} /> What's The Weather Like <FontAwesomeIcon icon={faQuestion} /></Badge></h1>
             <input type="text" placeholder="Enter city..." className="city"/>
             <br/>
-            <Button variant="primary" id="submit" onClick={this.getCity}>Check Weather!</Button>
+            <Button id="submit" onClick={this.getCity}>Check Weather!</Button>
+          </div>
           <div className="info">{weatherInfo}</div>
           <div className="fiveDays"><CardGroup>{fiveDays}</CardGroup></div>
         </Container>
