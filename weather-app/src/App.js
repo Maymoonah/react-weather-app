@@ -47,6 +47,20 @@ class App extends Component {
   // render next five day forecast to the 'fiveDays' div
   renderFiveDays() {
     let data = this.state.nextFiveDays;
+    // return (
+    //   data.map((el, index) => (
+    //     <Card key = {index}>
+    //       <Card.Img className ="weatherPhoto" variant="top" src="images/sunny.jpg" />
+    //       <Card.Body>
+    //         <Card.Title>Day {index+1}</Card.Title>
+    //         <Card.Text>
+    //           {el[index][1].Date}, {el[index][1].Day["IconPhrase"]}, {el[index][1].Temperature.Maximum.Value}/{el[index][1].Temperature.Minimum.Value}
+    //         </Card.Text>
+    //       </Card.Body>
+    //     </Card>
+    //   ))
+    // )
+       
     return ( 
       <CardGroup>
         <Card>
@@ -132,11 +146,8 @@ class App extends Component {
 
   renderInfo() {
     return(
-    <Card className="bg-info text-white">
-      <Card.Img src="holder.js/100px270" alt="Card image" />
-      <Card.ImgOverlay>
-        <Card.Title>Weather App</Card.Title><br/>
-        <Card.Text>
+      <div>
+        <Card>
           <strong>City:</strong> <span className="details">{this.state.city}, {this.state.country}</span><br/>
           <strong>Latitude:</strong> <span className="details">{this.state.lat}</span><br/>
           <strong>Longitude:</strong> <span className="details">{this.state.lon}</span><br/>
@@ -148,26 +159,28 @@ class App extends Component {
           <strong>Weather Description: </strong><span className="details">{this.state.weatherDescription}</span><br/>
           <strong>Humidity:</strong> <span className="details">{this.state.humidity}</span><br/>
           <strong>Wind Speed:</strong> <span className="details">{this.state.wind} mph</span><br/>
-        </Card.Text>
-      </Card.ImgOverlay>
-    </Card>
+        </Card>
+      </div>
     )
   }
 
   render () {
-    let fiveDays;
+    let fiveDays, weatherInfo;
     if(this.state.nextFiveDays) {
       fiveDays = this.renderFiveDays();
+    }
+    if(this.state.city) {
+      weatherInfo = this.renderInfo();
     }
     return (
       <div className="App">
         <Container fluid>
-          <h1 id="title"><Badge variant="info"><FontAwesomeIcon icon={faCloudSunRain} /> What's The Weather Like <FontAwesomeIcon icon={faQuestion} /></Badge></h1>
+          <h1 id="title"><Badge variant="primary"><FontAwesomeIcon icon={faCloudSunRain} /> What's The Weather Like <FontAwesomeIcon icon={faQuestion} /></Badge></h1>
             <input type="text" placeholder="Enter city..." className="city"/>
             <br/>
-            <Button variant="info" id="submit" onClick={this.getCity}>Check Weather!</Button>
-          <div className="info"></div>
-          <div className="fiveDays">{fiveDays}</div>
+            <Button variant="primary" id="submit" onClick={this.getCity}>Check Weather!</Button>
+          <div className="info">{weatherInfo}</div>
+          <div className="fiveDays"><CardGroup>{fiveDays}</CardGroup></div>
         </Container>
       </div> 
     );
