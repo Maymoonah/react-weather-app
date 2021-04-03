@@ -47,6 +47,11 @@ class App extends Component {
   // render next five day forecast to the 'fiveDays' div
   renderFiveDays() {
     let data = this.state.nextFiveDays;
+    let date1 = data[0][1].Date.substring(0, 10);
+    let date2 = data[1][1].Date.substring(0, 10);
+    let date3 = data[2][1].Date.substring(0, 10);
+    let date4 = data[3][1].Date.substring(0, 10);
+    let date5 = data[4][1].Date.substring(0, 10);
     // return (
     //   data.map((el, index) => (
     //     <Card key = {index}>
@@ -66,9 +71,10 @@ class App extends Component {
         <Card>
           <Card.Img className ="weatherPhoto" variant="top" src="images/sunny.jpg" />
           <Card.Body>
-            <Card.Title>Day 1</Card.Title>
+            <Card.Title>{date1}</Card.Title>
             <Card.Text>
-              {data[0][1].Date}, {data[0][1].Day["IconPhrase"]}, {data[0][1].Temperature.Maximum.Value}/{data[0][1].Temperature.Minimum.Value}
+              {data[0][1].Day["IconPhrase"]}<br/>
+              High/Low: {data[0][1].Temperature.Maximum.Value}/{data[0][1].Temperature.Minimum.Value}
             </Card.Text>
           </Card.Body>
           
@@ -76,9 +82,10 @@ class App extends Component {
         <Card>
           <Card.Img className ="weatherPhoto" variant="top" src="images/partly_cloudy.jpg" />
           <Card.Body>
-            <Card.Title>Day 2</Card.Title>
+            <Card.Title>{date2}</Card.Title>
             <Card.Text>
-              {data[1][1].Date}, {data[1][1].Day["IconPhrase"]}, {data[1][1].Temperature.Maximum.Value}/{data[1][1].Temperature.Minimum.Value}
+              {data[1][1].Day["IconPhrase"]}<br/>
+              High/Low: {data[1][1].Temperature.Maximum.Value}/{data[1][1].Temperature.Minimum.Value}
             </Card.Text>
           </Card.Body>
           
@@ -86,9 +93,10 @@ class App extends Component {
         <Card>
           <Card.Img className ="weatherPhoto" variant="top" src="images/cloudy.jpg" />
           <Card.Body>
-            <Card.Title>Day 3</Card.Title>
+            <Card.Title>{date3}</Card.Title>
             <Card.Text>
-              {data[2][1].Date}, {data[2][1].Day["IconPhrase"]}, {data[2][1].Temperature.Maximum.Value}/{data[2][1].Temperature.Minimum.Value}
+              {data[2][1].Day["IconPhrase"]}<br/>
+              High/Low: {data[2][1].Temperature.Maximum.Value}/{data[2][1].Temperature.Minimum.Value}
             </Card.Text>
           </Card.Body>
           
@@ -96,9 +104,10 @@ class App extends Component {
         <Card>
           <Card.Img className ="weatherPhoto" variant="top" src="images/rainy.jpg" />
           <Card.Body>
-            <Card.Title>Day 4</Card.Title>
+            <Card.Title>{date4}</Card.Title>
             <Card.Text>
-              {data[3][1].Date}, {data[3][1].Day["IconPhrase"]}, {data[3][1].Temperature.Maximum.Value}/{data[3][1].Temperature.Minimum.Value}
+              {data[3][1].Day["IconPhrase"]}<br/>
+              High/Low: {data[3][1].Temperature.Maximum.Value}/{data[3][1].Temperature.Minimum.Value}
             </Card.Text>
           </Card.Body>
           
@@ -106,9 +115,10 @@ class App extends Component {
         <Card>
           <Card.Img className ="weatherPhoto" variant="top" src="images/sunny.jpg" />
           <Card.Body>
-            <Card.Title>Day 5</Card.Title>
+            <Card.Title>{date5}</Card.Title>
             <Card.Text>
-              {data[4][1].Date}, {data[4][1].Day["IconPhrase"]}, {data[4][1].Temperature.Maximum.Value}/{data[4][1].Temperature.Minimum.Value}
+              {data[4][1].Day["IconPhrase"]}<br/>
+              High/Low: {data[4][1].Temperature.Maximum.Value}/{data[4][1].Temperature.Minimum.Value}
             </Card.Text>
           </Card.Body>
         </Card>
@@ -152,16 +162,16 @@ class App extends Component {
           <Card.ImgOverlay>
             <Card.Text>
               <strong>City:</strong> <span className="details">{this.state.city}, {this.state.country}</span><br/>
-                  <strong>Latitude:</strong> <span className="details">{this.state.lat}</span><br/>
-                  <strong>Longitude:</strong> <span className="details">{this.state.lon}</span><br/>
-                  <strong>Temperature:</strong> <span className="details"> {this.state.temperature}</span><br/>
-                  <strong>Feels Like:</strong> <span className="details">{this.state.feelsLike}</span><br/>
-                  <strong>Maximum Temperature: </strong><span className="details">{this.state.maxTemp}</span><br/>
-                  <strong>Minimum Temperature: </strong><span className="details">{this.state.minTemp}</span><br/>
-                  <strong>Weather:</strong> <span className="details">{this.state.weather}</span><br/>
-                  <strong>Weather Description: </strong><span className="details">{this.state.weatherDescription}</span><br/>
-                  <strong>Humidity:</strong> <span className="details">{this.state.humidity}</span><br/>
-                  <strong>Wind Speed:</strong> <span className="details">{this.state.wind} mph</span><br/>
+              <strong>Latitude:</strong> <span className="details">{this.state.lat}</span><br/>
+              <strong>Longitude:</strong> <span className="details">{this.state.lon}</span><br/>
+              <strong>Temperature:</strong> <span className="details"> {this.state.temperature}</span><br/>
+              <strong>Feels Like:</strong> <span className="details">{this.state.feelsLike}</span><br/>
+              <strong>Maximum Temperature: </strong><span className="details">{this.state.maxTemp}</span><br/>
+              <strong>Minimum Temperature: </strong><span className="details">{this.state.minTemp}</span><br/>
+              <strong>Weather:</strong> <span className="details">{this.state.weather}</span><br/>
+              <strong>Weather Description: </strong><span className="details">{this.state.weatherDescription}</span><br/>
+              <strong>Humidity:</strong> <span className="details">{this.state.humidity}</span><br/>
+              <strong>Wind Speed:</strong> <span className="details">{this.state.wind} mph</span><br/>
             </Card.Text>
           </Card.ImgOverlay>
         </Card>
