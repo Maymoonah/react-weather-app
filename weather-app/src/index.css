@@ -1,4 +1,7 @@
-
+.header {
+	background-color: #fffdcf;
+	padding: 10px;
+}
 div.App {
 	margin: auto;
 	text-align: center;
@@ -12,6 +15,14 @@ h1#title {
 	font-size: 48px;
 	color: #1c59c9;
 	letter-spacing: 2px;
+}
+
+.badge-primary {
+	width: 60%;
+}
+
+.sky {
+	opacity: 0.1;
 }
 
 .city {
@@ -29,6 +40,9 @@ h1#title {
 
 #submit {
 	text-transform: uppercase;
+	margin: 10px;
+	background-color: #1c59c9;
+	width: 60%;
 }
 
 .info span {
@@ -39,4 +53,9 @@ h1#title {
 .weatherPhoto {
 	height: 150px;
 	width: 100px;
+}
+
+strong {
+	color: #000;
+	text-align: left;
 }
