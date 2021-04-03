@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Card, CardGroup, Button, Badge} from 'react-bootstrap/';
+import { Container, Card, CardGroup, Button} from 'react-bootstrap/';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuestion, faCloudSunRain } from '@fortawesome/free-solid-svg-icons'
+import { faQuestion, faCloudSunRain } from '@fortawesome/free-solid-svg-icons';
+import WeatherDescription from "./components/WeatherDescription";
 
 class App extends Component {
 
@@ -191,10 +192,11 @@ class App extends Component {
       <div className="App">
         <Container fluid>
           <div className="header">
-          <h1 id="title"><Badge variant="primary"><FontAwesomeIcon icon={faCloudSunRain} /> What's The Weather Like <FontAwesomeIcon icon={faQuestion} /></Badge></h1>
+          <h1 id="title"><FontAwesomeIcon icon={faCloudSunRain} /> What's The Weather Like <FontAwesomeIcon icon={faQuestion} /></h1>
             <input type="text" placeholder="Enter city..." className="city"/>
             <br/>
             <Button id="submit" onClick={this.getCity}>Check Weather!</Button>
+            <WeatherDescription />
           </div>
           <div className="info">{weatherInfo}</div>
           <div className="fiveDays"><CardGroup>{fiveDays}</CardGroup></div>
