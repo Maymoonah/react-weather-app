@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Card, CardGroup, Button} from 'react-bootstrap/';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuestion, faCloudSunRain } from '@fortawesome/free-solid-svg-icons';
+import { Container, Card, CardGroup } from 'react-bootstrap/';
 import WeatherDescription from "./components/WeatherDescription";
+import Header from "./components/Header";
 
 class App extends Component {
 
@@ -181,23 +180,21 @@ class App extends Component {
   }
 
   render () {
-    let fiveDays, weatherInfo;
+    let fiveDays, weatherInfo, nextFiveDays;
     if(this.state.nextFiveDays) {
       fiveDays = this.renderFiveDays();
     }
     if(this.state.city) {
       weatherInfo = this.renderInfo();
     }
+    if(this.state.nextFiveDays) {
+      nextFiveDays = this.state.nextFiveDays;
+    }
     return (
       <div className="App">
         <Container fluid>
-          <div className="header">
-          <h1 id="title"><FontAwesomeIcon icon={faCloudSunRain} /> What's The Weather Like <FontAwesomeIcon icon={faQuestion} /></h1>
-            <input type="text" placeholder="Enter city..." className="city"/>
-            <br/>
-            <Button id="submit" onClick={this.getCity}>Check Weather!</Button>
-            <WeatherDescription />
-          </div>
+          <Header getCity={this.getCity} />
+          <WeatherDescription fiveDayForecast={nextFiveDays}/>
           <div className="info">{weatherInfo}</div>
           <div className="fiveDays"><CardGroup>{fiveDays}</CardGroup></div>
         </Container>
