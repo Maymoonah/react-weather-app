@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 
 class WeatherDescription extends Component {
   render() {
+  	
     return (
-    	<div>Hi, I'm the WeatherDescription Component</div>
+    	<div>{
+    		
+    	}</div>
     )
   }
 }
