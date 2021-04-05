@@ -1,10 +1,10 @@
-.header {
-	background-color: #fffdcf;
-	padding: 10px;
-}
 div.App {
 	margin: auto;
 	text-align: center;
+}
+
+.header {
+	/*background-image: url("https://i.pinimg.com/originals/65/cd/0c/65cd0c9391cf8f96a861792162d7fd73.jpg");*/
 }
 
 h1#title {
@@ -17,8 +17,9 @@ h1#title {
 	letter-spacing: 2px;
 }
 
-.badge-primary {
-	width: 60%;
+.badge-primary, .city, #submit {
+	width: 100%;
+	margin: 0px;
 }
 
 .sky {
@@ -26,9 +27,7 @@ h1#title {
 }
 
 .city {
-	width: 60%;
 	padding: 6px;
-	margin: 4px;
 	font-family: monospace;
 	font-size: 24px;
 	font-weight: bold;
@@ -40,9 +39,7 @@ h1#title {
 
 #submit {
 	text-transform: uppercase;
-	margin: 10px;
 	background-color: #1c59c9;
-	width: 60%;
 }
 
 .info span {
