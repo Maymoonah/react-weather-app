@@ -29,6 +29,7 @@ class App extends Component {
     .then(data => { 
       this.setState({ cityKey: data[0].Key })
       this.nextFiveDays();
+      this.satelliteImagery();
     });
   }
 
@@ -41,7 +42,18 @@ class App extends Component {
         nextFiveDays: Object.entries(data.DailyForecasts)
       })
     });
+  }
 
+  // Get satellite imagery for city entered
+  satelliteImagery() {
+    fetch(`http://dataservice.accuweather.com/imagery/v1/maps/radsat/{640x480}/${this.state.cityKey}?apikey=${this.state.API}`)
+    .then(response => { return response.json()})
+    .then(data => { 
+      this.setState({ satelliteImagery: Object.entries(data) })
+    });
+    if(this.state.satelliteImagery) {
+      console.log(this.state.satelliteImagery)
+    }
   }
 
   // render next five day forecast to the 'fiveDays' div
@@ -180,7 +192,7 @@ class App extends Component {
   }
 
   render () {
-    let fiveDays, weatherInfo, nextFiveDays;
+    let fiveDays, weatherInfo, nextFiveDays, satelliteImagery;
     if(this.state.nextFiveDays) {
       fiveDays = this.renderFiveDays();
     }
@@ -190,6 +202,9 @@ class App extends Component {
     if(this.state.nextFiveDays) {
       nextFiveDays = this.state.nextFiveDays;
     }
+    if(this.state.satelliteImagery) {
+      satelliteImagery = this.satelliteImagery();
+    }
     return (
       <div className="App">
         <Container fluid>
@@ -197,6 +212,7 @@ class App extends Component {
           <WeatherDescription fiveDayForecast={nextFiveDays}/>
           <div className="info">{weatherInfo}</div>
           <div className="fiveDays"><CardGroup>{fiveDays}</CardGroup></div>
+          <div>{this.satelliteImagery}</div>
         </Container>
       </div> 
     );
