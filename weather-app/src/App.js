@@ -65,77 +65,18 @@ class App extends Component {
     let date3 = data[2][1].Date.substring(0, 10);
     let date4 = data[3][1].Date.substring(0, 10);
     let date5 = data[4][1].Date.substring(0, 10);
-    // return (
-    //   data.map((el, index) => (
-    //     <Card key = {index}>
-    //       <Card.Img className ="weatherPhoto" variant="top" src="images/sunny.jpg" />
-    //       <Card.Body>
-    //         <Card.Title>Day {index+1}</Card.Title>
-    //         <Card.Text>
-    //           {el[index][1].Date}, {el[index][1].Day["IconPhrase"]}, {el[index][1].Temperature.Maximum.Value}/{el[index][1].Temperature.Minimum.Value}
-    //         </Card.Text>
-    //       </Card.Body>
-    //     </Card>
-    //   ))
-    // )
+
+    let desc1 = data[0][1].Day["IconPhrase"];
+    let desc2 = data[1][1].Day["IconPhrase"];
+    let desc3 = data[2][1].Day["IconPhrase"];
+    let desc4 = data[3][1].Day["IconPhrase"];
+    let desc5 = data[4][1].Day["IconPhrase"];
+
+    let dates = [date1, date2, date3,date4, date5];
+    let descriptions = [desc1, desc2, desc3, desc4, desc5];
        
     return ( 
-      <CardGroup>
-        <Card>
-          <Card.Img className ="weatherPhoto" variant="top" src="images/sunny.jpg" />
-          <Card.Body>
-            <Card.Title>{date1}</Card.Title>
-            <Card.Text>
-              {data[0][1].Day["IconPhrase"]}<br/>
-              High/Low: {data[0][1].Temperature.Maximum.Value}/{data[0][1].Temperature.Minimum.Value}
-            </Card.Text>
-          </Card.Body>
-          
-        </Card>
-        <Card>
-          <Card.Img className ="weatherPhoto" variant="top" src="images/partly_cloudy.jpg" />
-          <Card.Body>
-            <Card.Title>{date2}</Card.Title>
-            <Card.Text>
-              {data[1][1].Day["IconPhrase"]}<br/>
-              High/Low: {data[1][1].Temperature.Maximum.Value}/{data[1][1].Temperature.Minimum.Value}
-            </Card.Text>
-          </Card.Body>
-          
-        </Card>
-        <Card>
-          <Card.Img className ="weatherPhoto" variant="top" src="images/cloudy.jpg" />
-          <Card.Body>
-            <Card.Title>{date3}</Card.Title>
-            <Card.Text>
-              {data[2][1].Day["IconPhrase"]}<br/>
-              High/Low: {data[2][1].Temperature.Maximum.Value}/{data[2][1].Temperature.Minimum.Value}
-            </Card.Text>
-          </Card.Body>
-          
-        </Card>
-        <Card>
-          <Card.Img className ="weatherPhoto" variant="top" src="images/rainy.jpg" />
-          <Card.Body>
-            <Card.Title>{date4}</Card.Title>
-            <Card.Text>
-              {data[3][1].Day["IconPhrase"]}<br/>
-              High/Low: {data[3][1].Temperature.Maximum.Value}/{data[3][1].Temperature.Minimum.Value}
-            </Card.Text>
-          </Card.Body>
-          
-        </Card>
-        <Card>
-          <Card.Img className ="weatherPhoto" variant="top" src="images/sunny.jpg" />
-          <Card.Body>
-            <Card.Title>{date5}</Card.Title>
-            <Card.Text>
-              {data[4][1].Day["IconPhrase"]}<br/>
-              High/Low: {data[4][1].Temperature.Maximum.Value}/{data[4][1].Temperature.Minimum.Value}
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      </CardGroup>
+      <Images data={data} descriptions={descriptions} dates={dates}/>
     )   
   }
 
