@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Card, CardGroup } from 'react-bootstrap/';
 import WeatherDescription from "./components/WeatherDescription";
 import Header from "./components/Header";
+import Header from "./components/Images";
 
 class App extends Component {
 
