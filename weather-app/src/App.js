@@ -182,25 +182,26 @@ class App extends Component {
     let fiveDays, weatherInfo, nextFiveDays, satelliteImagery;
     if(this.state.nextFiveDays) {
       fiveDays = this.renderFiveDays();
-    }
-    if(this.state.city) {
       weatherInfo = this.renderInfo();
-    }
-    if(this.state.nextFiveDays) {
       nextFiveDays = this.state.nextFiveDays;
     }
-    if(this.state.satelliteImagery) {
-      satelliteImagery = this.satelliteImagery();
-    }
+    // if(this.state.city) {
+    //   weatherInfo = this.renderInfo();
+    // }
+    // if(this.state.nextFiveDays) {
+    //   nextFiveDays = this.state.nextFiveDays;
+    // }
+    // if(this.state.satelliteImagery) {
+    //   satelliteImagery = this.satelliteImagery();
+    // }
     return (
       <div className="App">
-        <Container fluid>
           <Header getCity={this.getCity} />
           <WeatherDescription fiveDayForecast={nextFiveDays}/>
           <div className="info">{weatherInfo}</div>
-          <div className="fiveDays"><CardGroup>{fiveDays}</CardGroup></div>
-          <div>{this.satelliteImagery}</div>
-        </Container>
+          <div className="fiveDays">{fiveDays}</div>
+          {/*<div>{this.satelliteImagery}</div>*/}
+        {/*<p><img src="images/sunny.jpg" alt="" /></p>*/}
       </div> 
     );
   }
